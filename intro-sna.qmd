@@ -1,0 +1,1957 @@
+---
+title: "Introduction to Network Analysis Methodologies and Tools"
+author: "<b>Ryan Horne</b> <br/> UCLA OARC <br/> rmhorne@ucla.edu <br/>Twitter: @RyanMHorne"
+format:
+ revealjs:
+  preview-links: true
+  logo: images/CC_BY-SA_icon.svg
+title-slide-attributes:
+ data-background-color: "#005c96"
+ data-background-size: 6%
+ data-background-position: 100% 100%   
+---
+
+## Overview {auto-animate="true" background-color="#005c96"}
+
+
+![](images/presentation-code.svg){.absolute top="0" right="0" width="100" height="100"}
+
+::: {.incremental}
+
+-   Data practices
+-   Discussion of network terms and concepts
+    - Software deomnstration (Gephi, Cytoscape, and Python oh my!)
+    - Python is live!
+:::
+
+## Basic Idea {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+-   Networks are a collection of entities
+-   At least some are *linked*
+-   All kinds of subject domains
+-   Very flexible definition
+:::
+
+## What is SNA? {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+- Method to perform visual and mathematical analysis of relationships
+- Analysis has to be visually interesting / useful and mathematically rigorous
+- Fundamental point: We are looking at networks
+-  Connections, connections, connections
+-  Networks are all over the place
+
+:::
+
+
+## What is SNA Used For? {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   People
+-   Concepts
+-   Literature
+-   Biological Systems
+-   Electronic Systems
+
+:::
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+
+![](images/comp-net.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+
+![](images/facebook.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+
+![](images/thrones.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+
+::: columns
+::: {.column width="50%"}
+![](images/counter-2.png)
+:::
+
+::: {.column width="50%"}
+![](images/counter-1.png)
+:::
+:::
+
+## Basic Terms {auto-animate="true" background-color="#005c96"}
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Nodes
+:::
+
+<br/>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Edges
+:::
+
+<br/>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Graph
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Nodes
+:::
+
+</h3>
+
+::: {.incremental}
+
+-   The "stuff" you are looking at
+-   Any attributes you want!
+-   Traditionally represented by circles on a graph
+-   May see "actors" used
+
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Edges
+:::
+
+</h3>
+
+::: {.incremental}
+
+
+-   What links your *nodes*
+    -   Sometimes called links
+    -   Up to us to define what this means
+-   Think of this workshop
+-   Can have *weight*
+-   Lines on a *graph*
+
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Graph
+:::
+
+</h3>
+
+::: columns
+::: {.column width="50%"}
+-   Mathematical models of network structures
+-   There are rules!
+:::
+
+::: {.column width="50%"}
+![](images/walter.png)
+:::
+:::
+
+## Undirected Graph {auto-animate="true" background-color="#005c96"}
+
+::: columns
+::: {.column width="50%"}
+
+::: {.incremental}
+
+-   Direction of the relationship does not matter
+-   No arrows are needed
+-   “Default” for many SNA discussions
+
+:::
+:::
+
+::: {.column width="50%"}
+![](images/a-b.png)
+:::
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+![](images/thrones.png)
+
+## Symmetrical and Asymmetrical Edges {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Sometimes not enough to simply show a connection
+-   A → B but not the other way around
+-   Directed graph: Directed nodes and directed edges
+
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+![](images/thrones-2.png)
+
+## What About Data? {auto-animate="true" background-color="#005c96"}
+
+![](images/data.png)
+
+## Some Things to Consider {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   What is your data?
+-   What are you trying to show?
+-   How are you going to organize your data?
+    -   Are there standards in your field?
+-   In short: Think a lot about database design!
+
+:::
+
+
+## Data Tools: The Basics {auto-animate="true" background-color="#005c96"}
+
+
+![](images/data-tools.png)
+
+## Basics {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+- Most basic level: Spreadsheet with two columns
+- Entries need to be in the same format AND have the same spellings, etc
+- AT MOST two different *types* of entities
+- More information is good!
+
+:::
+
+## Some Best Practices {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   Create a unique identifier
+-   Each column contains the same category of data in every row in the column
+-   Each row in the spreadsheet contains all of the fields of data for one entity
+-   The first row of the spreadsheet must contain a unique name at the top of each column
+-   No blank rows
+-   Think about attributes!
+
+:::
+
+
+## More Best Practices {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Do not be afraid to make multiple spreadsheets!
+    -   These can translate into multiple tables in a database
+-   Think about the minimum work needed to maintain and update your data
+-   Document!
+
+:::
+
+
+## Modes vs Types {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Modes tell you what is in the graph
+    -   People, people and things, etc
+-   Types tell you what kind of graph it is
+    -   Are we looking at an individual? Group? Text?
+
+:::
+
+
+## One Mode / Unipartite Networks {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Relationships among a single set of similar nodes
+-   Same type of nodes
+-   Same type of edges
+    -   Some differentiation allowed; i.e. parent / child relationships
+
+::: 
+
+##  {auto-animate="true" background-color="#005c96"}
+
+![](images/thrones.png)
+
+## Two Mode / Multipartite Networks {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Relations among two (or more!) different sets of nodes
+    -   Can be two different sets of people
+-   Also used between nodes of different conceptual type
+    -   People vs. interests / events
+    -   Important for the analysis of weak ties – we will get into this shortly
+
+:::
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+![](images/bipartite.png)
+
+## Making a Graph: Two Basic Ways {auto-animate="true" background-color="#005c96"}
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Edges Only
+:::
+
+<br/>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Edges + Nodes
+:::
+
+<br/>
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Edges Only
+:::
+
+</h3>
+
+::: columns
+::: {.column width="50%"}
+Pros
+
+::: {.incremental}
+
+-   Quick and dirty
+-   Can get network stats fast
+-   Less data overhead to deal with
+- Can specify connections
+
+:::
+:::
+
+::: {.column width="50%"}
+
+Cons
+
+::: {.incremental}
+
+
+-   No information about nodes
+- Hard to filter / query
+- Stuck with one data relationship
+
+:::
+:::
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Edges + Nodes
+:::
+
+</h3>
+
+::: columns
+::: {.column width="50%"}
+
+Pros
+
+::: {.incremental}
+
+
+-   Can include far more information
+- Can specify connections
+-   Data can be used elsewhere
+
+:::
+:::
+
+::: {.column width="50%"}
+
+Cons
+
+::: {.incremental}
+
+
+- More information overhead
+- Separation of network data
+- Longer process to make a network
+
+:::
+:::
+:::
+
+
+## First Networks {auto-animate="true" background-color="#005c96"}
+
+Start with just edges in:
+<br />
+<br />
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+<br/>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape
+:::
+
+<br/>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python
+:::
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+</h3>
+
+![](images/gephi-intro.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+</h3>
+
+![](images/gephi-menu.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+</h3>
+
+![](images/gephi-select.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+</h3>
+
+![](images/gephi-settings.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi
+:::
+
+</h3>
+
+![](images/gephi-first-net.png)
+
+
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape
+:::
+
+</h3>
+
+![](images/get-your-edge-list-into-cytoscape.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Add Edges the Hard Way
+:::
+
+</h3>
+
+Import Network from File button (circled below) and select your edge list.
+
+![](images/if-you-don-t-see-that-welcome-screen.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: What's What
+:::
+
+</h3>
+
+::: {.incremental}
+
+
+- We need to tell Cytoscape that the edge list we’ve provided contains *sources* in one column and *targets* in another.
+- This is an *undirected graph*
+    - Does order matter?
+- Green and Red icons
+
+:::
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: What's What
+:::
+
+</h3>
+
+![](images/got-edge-import.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape Graph
+:::
+
+</h3>
+![](images/cyto-got-edges.png)
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+```{python}
+#| eval: false
+#| echo: true
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+dfedges
+```
+### Result  {.smaller} 
+```{python}
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+dfedges
+```
+:::
+
+
+##  {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python Graphs
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+# Draw the graph!
+pos = nx.spring_layout(G, k=1, iterations=20)
+nx.draw(G, pos, with_labels=True)
+```
+
+### Result
+
+```{python}
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+# Draw the graph!
+pos = nx.spring_layout(G, k=1, iterations=20)
+nx.draw(G, pos, with_labels=True)
+
+```
+
+:::
+
+## Edges Only: Only Node Information {auto-animate="true" background-color="#005c96"}
+
+- No information about nodes
+- Our data set does not have much, but you will see how to add it
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Add Nodes
+:::
+
+</h3>
+
+
+![](images/gephi-nodes-added.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Node Settings
+:::
+
+</h3>
+
+
+![](images/gephi-settings2.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Node Information
+:::
+
+</h3>
+
+![](images/gephi-first-lab.png)
+
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Add Nodes
+:::
+
+</h3>
+
+
+![](images/add-your-node-list-to-your-cytoscape-graph.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Node Settings
+:::
+
+</h3>
+
+![](images/cyto-nodes-1.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Results
+:::
+
+</h3>
+
+![](images/cyto-with-nodes.png)
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Nodes
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+
+# Now get the node data
+urlNode = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-nodes.csv'
+dfnodes = pd.read_csv(urlNode)
+
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+data = dfnodes.set_index('Id').to_dict('index').items()
+G.add_nodes_from(data)
+
+print(G.nodes(data=True))
+
+```
+
+### Result
+
+```{python}
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+
+# Now get the node data
+urlNode = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-nodes.csv'
+dfnodes = pd.read_csv(urlNode)
+
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+data = dfnodes.set_index('Id').to_dict('index').items()
+G.add_nodes_from(data)
+
+print(G.nodes(data=True))
+
+
+```
+
+:::
+
+
+## Why Not Just Combine the Lists Later? {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+- You *can*, but...
+    - You can use node attributes for styling
+    - You can use node attrbutes for filtering
+    - Many other uses
+
+:::
+
+
+## Exploring our Graph: Paths {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   Movement in a graph via edges
+-   Sequence of nodes connected via edges
+-   *Simple path*: A path that does not repeat nodes
+
+:::
+
+
+## Connectivity {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   Path between every pair of nodes
+-   Goal of most designed networks
+-   NOT a necessary feature of graphs though!
+-   There are social networks with disconnected features
+
+:::
+
+
+## Example – Anyone know what this is? {auto-animate="true" background-color="#005c96"}
+
+![](images/darpanet.png)
+
+
+## Graph Distance {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+
+-   Not geographic (mostly!)
+-   Distance = length of the shortest path between two nodes
+    -   Number of edges
+    -   Sometimes we can simply look at this
+    -   Other times...we need computers!
+
+:::
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Path
+:::
+
+</h3>
+
+![](images/gephi-path-final.png)
+
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Paths
+:::
+
+
+</h3>
+
+![](images/cyto-path.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Paths
+:::
+
+</h3>
+
+I....can't get these to work right. 
+<br />
+<br />
+There is javascript code though!
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Graph Distance
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+path = dict(nx.all_pairs_shortest_path(G))
+path
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+path = dict(nx.all_pairs_shortest_path(G))
+path
+
+```
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Paths
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+# Draw the graph!
+pos = nx.spring_layout(G, k=4, iterations=20)
+nx.draw(G, pos, with_labels=True, node_size=5, font_size=5, width=.2)
+# draw path in red
+path = nx.shortest_path(G,source='HUGH_OF_THE_VALE',target='MIRRI_MAZ_DUUR')
+path_edges = list(zip(path,path[1:]))
+nx.draw_networkx_nodes(G,pos,nodelist=path,node_color='r')
+nx.draw_networkx_edges(G,pos,edgelist=path_edges,edge_color='r',width=10)
+plt.axis('equal')
+plt.show()
+```
+
+### Result
+
+```{python}
+import networkx as nx
+import csv
+import pandas as pd
+from community import community_louvain
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+# First, get the edge data
+url = 'https://raw.githubusercontent.com/mathbeveridge/gameofthrones/master/data/got-s1-edges.csv'
+dfedges = pd.read_csv(url)
+# Dataset is now stored in a Pandas Dataframe
+
+# Now we create the graph from the edge list. We need to specify the column names as they are in mixed case
+G = nx.from_pandas_edgelist(dfedges, source="Source", target = "Target", edge_attr=True)
+# Draw the graph!
+pos = nx.spring_layout(G, k=4, iterations=20)
+nx.draw(G, pos, with_labels=True, node_size=5, font_size=5, width=.2)
+# draw path in red
+path = nx.shortest_path(G,source='HUGH_OF_THE_VALE',target='MIRRI_MAZ_DUUR')
+path_edges = list(zip(path,path[1:]))
+nx.draw_networkx_nodes(G,pos,nodelist=path,node_color='r')
+nx.draw_networkx_edges(G,pos,edgelist=path_edges,edge_color='r',width=10)
+plt.axis('equal')
+plt.show()
+```
+
+:::
+
+## Small-world phenomenon {auto-animate="true" background-color="#005c96"}
+
+
+::: columns
+::: {.column width="50%"}
+
+::: {.incremental}
+
+
+-   Shorter path then you would think to get from one node to another
+-   Origin of the term “six degrees of separation”
+-   Practical terms: Who has a friend from another country?
+
+:::
+:::
+
+::: {.column width="50%"}
+![](images/kevin.png)
+:::
+:::
+
+
+## Components {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Natural breaks for connected portions of a graph
+-   Connected component of a graph
+    -   Every node in the subset has a path to each other
+
+::: 
+
+## Giant Component {auto-animate="true" background-color="#005c96"}
+
+
+::: columns
+::: {.column width="50%"}
+Informal definition: Connected component that contains a significant fraction of all the nodes
+
+-   Return to Game of Thrones: People who want Joffrey dead. Not **everybody**, but close!
+-   Most networks only have one giant component
+:::
+
+::: {.column width="50%"}
+![](images/joff.png)
+:::
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Giant Component
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```{python}
+#| eval: false
+#| echo: true         
+# Draw the graph!
+pos = nx.spring_layout(G, k=1, iterations=20)
+Gcc = sorted(nx.connected_components(G), key=len, reverse=True)
+G0 = G.subgraph(Gcc[0])
+nx.draw(G0, pos, with_labels=True)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+# Draw the graph!
+pos = nx.spring_layout(G, k=1, iterations=20)
+Gcc = sorted(nx.connected_components(G), key=len, reverse=True)
+G0 = G.subgraph(Gcc[0])
+nx.draw(G0, pos, with_labels=True)
+
+```
+:::
+
+## Merger of Giant Components {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+
+-   Only one connection merges giant components into one
+    -   In history: Sudden, often catastrophic change
+    -   Think of 1492 C.E.
+        -   Disease
+        -   Political change
+        -   Previous contacts were not sustained
+-   Issue of time
+
+:::
+
+
+## Beyond Visualization {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   You know about *nodes*, *edges*, *paths*, *distance*, *components*, *directed* and *undirected* graphs
+-   Time to move on from description of graphs to some operations
+-   These are some of the most common measurements
+
+::: 
+
+## Network Density {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+
+-   Number of actual edges divided by total number of possible edges
+    -   Actual vs. potential connections
+-   One of the most basic measurements in SNA
+-   Especially interesting in epidemiology
+    -   Or any analysis of how something spreads in a network
+
+:::
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Network Statistics
+:::
+
+</h3>
+
+![](images/gephi-run.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Graph Density
+:::
+
+</h3>
+
+![](images/graph-density1.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Graph Density
+:::
+
+</h3>
+
+![](images/graph-density2.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Tools
+:::
+
+</h3>
+
+![](images/cytoscape-tools.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Density
+:::
+
+</h3>
+
+![](images/cyto-density.png)
+
+
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Network Density
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+nx.density(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.density(G)
+
+```
+:::
+
+## Degree Measurements {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Sum of all other nodes with a direct *path* to a node
+-   Signifies activity or popularity
+-   Very good for looking at nodes in a local context
+-   In, Out
+    -   Weighted and unweighted
+- In Gephi and Cytoscape we already ran these
+    - I will point them out then move on to python
+
+:::
+
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Degree Measurements
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+G.degree
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+G.degree
+
+```
+:::
+
+## Size by Degree {auto-animate="true" background-color="#005c96"}
+
+- Now we will visualize this on our graph
+- Same techniques can be used for all other measurements / attributes
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Size by Degree
+:::
+
+</h3> 
+![](images/gephi-size1.png)
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Size by Degree
+:::
+
+</h3> 
+![](images/gephi-size2.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Size by Degree
+:::
+
+</h3> 
+![](images/gephi-size3.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Size by Degree
+:::
+
+</h3>
+
+![](images/cyto-vis1.png)
+
+
+## {auto-animate="true" background-color="#005c96"}
+
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Size by Degree
+:::
+
+</h3>
+
+![](images/cyto-map-1.png)
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Degree graph
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```{python}
+#| eval: false
+#| echo: true
+
+d = dict(G.degree)
+
+nx.draw(G, nodelist=d.keys(), node_size=[v * 10 for v in d.values()])
+plt.show()
+
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+d = dict(G.degree)
+
+nx.draw(G, nodelist=d.keys(), node_size=[v * 10 for v in d.values()])
+plt.show()
+
+```
+:::
+
+## Centrality {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   ***VERY*** important concept!
+-   What many people want to see in networks: the most prominent nodes
+-   These are often the “key” players in a network
+-   Idea of social power
+    -   Assertion: Power is inherently relational
+
+:::
+
+
+## Betweeness Centrality {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Measures how often a node appears on shortest paths between nodes in the network
+-   Often better to change visualization to identify them
+-   A node with a high measure here could be important...or at the periphery of multiple networks
+
+:::
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Betweeness Centrality
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```{python}
+#| eval: false
+#| echo: true         
+nx.betweenness_centrality(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.betweenness_centrality(G)
+
+```
+:::
+
+## Closeness Centrality {auto-animate="true" background-color="#005c96"}
+
+
+-   A sum of the shortest path between all nodes from a node
+-   Useful to find out who spreads information quickly; might not be useful in a highly connected network
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Closeness Centrality
+:::
+
+</h3>
+
+::: panel-tabset
+
+### Python Code {auto-animate="true" background-color="#005c96"}
+
+
+```         
+nx.closeness_centrality(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.closeness_centrality(G)
+```
+:::
+
+## Eigenvector Centrality {.smaller auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Basic idea: A node is important if it is linked to by other important nodes
+    - I have almost no friends - but my friends are
+        - The President
+        - The Pope
+        - Santa Claus
+        - *Insert influencer / Reality TV star here*
+
+-   Global vs. local importance
+-   Mathematical modeling of this stretches back to the 1940s
+    -   Software does this for us!
+
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Eigenvector Centrality
+:::
+
+</h3>
+
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+nx.eigenvector_centrality(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.eigenvector_centrality(G)
+```
+:::
+
+## Page Rank {auto-animate="true" background-color="#005c96"}
+
+-   Similar to Eigenvector, but takes into account the direction and weight of connections
+-   Famously used by Google
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Page Rank
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+nx.pagerank(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.pagerank (G)
+```
+:::
+
+## Bridges {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Edge joining two nodes is a bridge if deleting that edge would cause the nodes to be in two different components of the graph
+    -   Very rare in social networks – think of the small world principle
+-   Local bridge if the endpoints have no friends in common
+    -   There can still be a path between the nodes if the bridge is deleted
+-   Best statistical approximation: Betweenness Centrality
+
+:::
+
+## Bridges {auto-animate="true" background-color="#005c96"}
+
+::: panel-tabset
+
+### Python Code {data-background="#005c96"}
+
+```         
+nx.has_bridges(G)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+nx.has_bridges(G)
+```
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Bridges
+:::
+
+</h3>
+
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+list(nx.bridges(G))
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+list(nx.bridges(G))
+```
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Highlight Bridges
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+# Identify the bridges
+bridges = list(nx.bridges(G))
+
+# Set positions for nodes using a layout algorithm
+pos = nx.spring_layout(G, k=.01, iterations=20)
+
+# Draw entire network
+nx.draw(G, pos, with_labels=False, node_size=5, width=.2)
+
+# Draw bridges in red
+for bridge in bridges:
+    nx.draw_networkx_edges(G, pos, edgelist=[bridge], edge_color='red', width=2)
+    nx.draw_networkx_nodes(G, pos, nodelist=bridge, node_color='red', node_size=700)
+
+# Create a dictionary of labels for nodes involved in bridges
+bridge_labels = {node: node for bridge in bridges for node in bridge}
+
+# Draw labels for nodes involved in bridges
+nx.draw_networkx_labels(G, pos, labels=bridge_labels, font_size=8, font_weight='bold')
+
+plt.show()
+```
+
+### Result
+
+```{python}
+
+# Identify the bridges
+bridges = list(nx.bridges(G))
+
+# Set positions for nodes using a layout algorithm
+pos = nx.spring_layout(G, k=.01, iterations=20)
+
+# Draw entire network
+nx.draw(G, pos, with_labels=False, node_size=5, width=.2)
+
+# Draw bridges in red
+for bridge in bridges:
+    nx.draw_networkx_edges(G, pos, edgelist=[bridge], edge_color='red', width=2)
+    nx.draw_networkx_nodes(G, pos, nodelist=bridge, node_color='red', node_size=700)
+
+# Create a dictionary of labels for nodes involved in bridges
+bridge_labels = {node: node for bridge in bridges for node in bridge}
+
+# Draw labels for nodes involved in bridges
+nx.draw_networkx_labels(G, pos, labels=bridge_labels, font_size=8, font_weight='bold')
+
+plt.show()
+
+
+```
+
+:::
+
+
+## Connection Strength {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+
+-   No real formal, strict definition
+-   Stronger links represent closer friendship / greater degrees of interaction
+-   Largely up to you!
+
+:::
+
+## Strong Ties and Weak Ties {auto-animate="true" background-color="#005c96"}
+
+-   Strong ties = close friendship, etc
+-   Weak ties = acquaintances, etc
+
+## Network Evolution: Triadic Closure {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   Concept: If two people in a social network have a friend in common, then there is an increased likelihood that they will become friends themselves at some point in the future
+-   Example: If Jaime and Pod are friends, and Jaime and Brienne of Tarth are friends, then it is likely that Brienne and Pod will become friends
+
+:::
+
+
+## Triadic Closure {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   This forms a triangle in the graph
+-   Generally form in social networks given enough time
+-   Think facebook friends feature
+-   Basic functionality of a social network
+
+:::
+
+
+##  {auto-animate="true" background-color="#005c96"}
+
+![](images/tri1.png)
+
+##  {auto-animate="true" background-color="#005c96"}
+
+
+![](images/tri2.png)
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Find All Potential Triads
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+plt.savefig('graph1.png') 
+
+```
+
+### Result
+
+```{python}
+
+plt.savefig('graph1.png') 
+
+
+```
+
+:::
+
+
+## Position at Structural Holes {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Structural hole
+    -   Empty space between sets of nodes that do not otherwise interact closely
+-   Position is advantageous
+    -   Access to information that other components might not have
+    -   Energy in reaching out to different groups rather than the same one
+
+:::
+
+## Other Issues {auto-animate="true" background-color="#005c96"}
+
+
+::: {.incremental}
+
+-   Synthesis from multiple ideas
+-   Social gatekeeping
+    -   A source of power as the position regulates communications
+    -   Some people might try to keep triangles from forming!
+-   Interests of a node and an organization may not be aligned
+    -   Connection may not be in the node's best interests
+    -   Unknown amount of time before triadic closure happens
+
+:::
+
+## Community Detection {auto-animate="true" background-color="#005c96"}
+
+::: {.incremental}
+
+-   The number of connections between nodes is more dense in a certain grouping than outside it
+-   In Gephi, this is the modularity measurement
+-   GOOD IDEA / common practice to make this the color of your nodes!
+
+:::
+
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Community Detection
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+partition = community_louvain.best_partition(G)
+print(partition)
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+partition = community_louvain.best_partition(G)
+print(partition)
+```
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Community Detection
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code {data-background="#005c96"}
+
+```         
+partition = community_louvain.best_partition(G)
+pos = nx.spring_layout(G)
+# color the nodes according to their partition
+cmap = cm.get_cmap('viridis', max(partition.values()) + 1)
+nx.draw_networkx_nodes(G, pos, partition.keys(), node_size=40,
+                       cmap=cmap, node_color=list(partition.values()))
+nx.draw_networkx_edges(G, pos, alpha=0.5)
+plt.show()
+```
+
+### Result {data-background="#005c96"}
+
+```{python}
+partition = community_louvain.best_partition(G)
+pos = nx.spring_layout(G)
+# color the nodes according to their partition
+cmap = cm.get_cmap('viridis', max(partition.values()) + 1)
+nx.draw_networkx_nodes(G, pos, partition.keys(), node_size=40,
+                       cmap=cmap, node_color=list(partition.values()))
+nx.draw_networkx_edges(G, pos, alpha=0.5)
+plt.show()
+```
+:::
+
+## Export Graphs {auto-animate="true" background-color="#005c96"}
+
+- We have a graph....now what?
+- Play around with different visulizations
+- Export as an image
+
+##  {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #2780e3; padding: 10px;"}
+Gephi: Export
+:::
+
+</h3>
+
+![](images/gephi-preview.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Export
+:::
+
+</h3>
+
+![](images/cyto-ex-1.png)
+
+## {auto-animate="true" background-color="#005c96"}
+
+<h3>
+
+::: {data-id="box" style="background: #3fb618; padding: 10px;"}
+Cytoscape: Export
+:::
+
+</h3>
+
+![](images/cyto-ex-2.png)
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Export
+:::
+
+</h3>
+
+::: panel-tabset
+### Python Code
+
+```{python}
+#| eval: false
+#| echo: true
+
+partition = community_louvain.best_partition(G)
+pos = nx.spring_layout(G)
+# color the nodes according to their partition
+cmap = cm.get_cmap('viridis', max(partition.values()) + 1)
+nx.draw_networkx_nodes(G, pos, partition.keys(), node_size=40,
+                       cmap=cmap, node_color=list(partition.values()))
+nx.draw_networkx_edges(G, pos, alpha=0.5)
+plt.savefig('graph1.png') 
+
+```
+
+### Result
+
+```{python}
+
+partition = community_louvain.best_partition(G)
+pos = nx.spring_layout(G)
+# color the nodes according to their partition
+cmap = cm.get_cmap('viridis', max(partition.values()) + 1)
+nx.draw_networkx_nodes(G, pos, partition.keys(), node_size=40,
+                       cmap=cmap, node_color=list(partition.values()))
+nx.draw_networkx_edges(G, pos, alpha=0.5)
+plt.savefig('graph1.png') 
+
+```
+
+:::
+
+## {auto-animate="true" background-color="#005c96" .smaller}
+
+<h3>
+
+::: {data-id="box" style="background: #e83e8c; padding: 10px;"}
+Python: Export
+:::
+
+</h3>
+
+![](graph1.png)
+
+## Thank You! {auto-animate="true" background-color="#005c96"}
+<br />
+<br />
+Any Questions?
